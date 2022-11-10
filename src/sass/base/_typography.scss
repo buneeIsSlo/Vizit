@@ -1,0 +1,9 @@
+@use "../utilities/" as *;
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: $ff-primary, 'Franklin Gothic Medium', Arial, sans-serif;
+}

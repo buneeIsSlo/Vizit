@@ -1,3 +1,3 @@
-import "../sass/app.scss";
+import "../sass/main.scss";
 
 console.log("ohaider");

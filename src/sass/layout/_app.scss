@@ -1,0 +1,60 @@
+@use "../utilities/" as *;
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: #404040;
+    padding: .5rem;
+}
+
+.app {
+    width: 100%;
+    height: 100%;
+    background-color: #c0c0c0;
+    position: relative;
+    display: grid;
+    outline: 2px solid red;
+    grid-template-areas: 
+    "logo"
+    "title"
+    "grid";
+    grid-template-rows: 80px 80px 1fr;
+    grid-template-columns: 1fr;
+
+    @include breakpoint(md) {
+        grid-template-areas:
+        "logo title"
+        "menu grid";
+        grid-template-rows: 80px 1fr;
+        grid-template-columns: 250px;
+        background-color: #ffffe6;
+    }
+
+    &__logo {
+        grid-area: logo;
+        outline: 2px solid red;
+    }
+
+    &__title {
+        grid-area: title;
+        outline: 2px solid red;
+    }
+
+    &__menu {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        outline: 2px solid red;
+
+        @include breakpoint(md) {
+            position: relative;
+            right: 0px;
+            grid-area: menu;
+        }
+    }
+
+    &__grid {
+        grid-area: grid;
+        outline: 2px solid red;
+    }
+}
