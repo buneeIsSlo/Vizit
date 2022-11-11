@@ -15,18 +15,18 @@ body {
     display: grid;
     outline: 2px solid red;
     grid-template-areas: 
-    "logo"
-    "title"
-    "grid";
+    "logo title"
+    "menu menu"
+    "grid grid";
     grid-template-rows: 80px 80px 1fr;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100px 1fr;
 
     @include breakpoint(md) {
         grid-template-areas:
         "logo title"
         "menu grid";
         grid-template-rows: 80px 1fr;
-        grid-template-columns: 250px;
+        grid-template-columns: 250px 1fr;
         background-color: #ffffe6;
     }
 
@@ -41,16 +41,8 @@ body {
     }
 
     &__menu {
-        position: absolute;
-        top: 0;
-        right: 20px;
+        grid-area: menu;
         outline: 2px solid red;
-
-        @include breakpoint(md) {
-            position: relative;
-            right: 0px;
-            grid-area: menu;
-        }
     }
 
     &__grid {
