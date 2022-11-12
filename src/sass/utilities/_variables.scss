@@ -1,4 +1,26 @@
+$c-chaos-black: hsl(60, 7%, 6%);
+$c-whool-white: hsl(60, 100%, 95%);
+$c-grayish-green: hsl(60, 6%, 35%);
+$c-light-gray: hsl(0, 0%, 90%);
+
+
 $ff-primary: GeneralSans;
+
+$fw-bold: 700;
+
+$fw-medium: 500;
+$fw-regular: 400;
+$fw-light: 200;
+
+$fs-100: .75rem;
+$fs-200: .875rem;
+$fs-300: 1rem;
+$fs-400: 1.25rem;
+$fs-500: 1.5rem;
+$fs-600: 2rem;
+$fs-700: 2.375rem;
+$fs-800: 3rem;
+
 
 $breakpoints: (
     sm: 480px,
