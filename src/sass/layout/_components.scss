@@ -1,0 +1,34 @@
+@use "../utilities/" as *;
+
+
+.dropdown {
+    width: 100%;
+    outline: 2px solid $c-grayish-green;
+    padding-inline: .8em;
+    padding-bottom: .9em;
+
+    &__button {
+        width: 100%;
+        font-weight: $fw-medium;
+        font-size: $fs-300;
+        padding-block: 1em;
+        background-color: transparent;
+        color: $c-whool-white;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        gap: .4em;
+
+        .option {
+            padding-block: .2em;
+            padding-inline: .8em;
+            font-weight: $fw-regular;
+            color: $c-light-gray;
+        }
+
+    }
+}

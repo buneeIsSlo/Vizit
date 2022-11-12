@@ -6,4 +6,16 @@ html {
 
 body {
     font-family: $ff-primary, 'Franklin Gothic Medium', Arial, sans-serif;
+    color: $c-whool-white;
+}
+
+h1 {
+    font-size: $fs-600;
+    font-weight: $fw-bold;
+}
+
+h2 {
+    font-size: $fs-600;
+    font-weight: $fw-medium;
+    text-transform: uppercase;
 }

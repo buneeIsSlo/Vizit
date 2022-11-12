@@ -3,23 +3,20 @@
 body {
     width: 100%;
     height: 100vh;
-    background-color: #404040;
-    padding: .5rem;
 }
 
 .app {
     width: 100%;
     height: 100%;
-    background-color: #c0c0c0;
-    position: relative;
+    background-color: $c-chaos-black;
     display: grid;
     outline: 2px solid red;
     grid-template-areas: 
     "logo title"
     "menu menu"
     "grid grid";
-    grid-template-rows: 80px 80px 1fr;
-    grid-template-columns: 100px 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: auto 1fr;
 
     @include breakpoint(md) {
         grid-template-areas:
@@ -38,15 +35,31 @@ body {
     &__title {
         grid-area: title;
         outline: 2px solid red;
+        padding: 1em;
+
+        .title {
+            text-align: center;
+        }
     }
 
     &__menu {
         grid-area: menu;
-        outline: 2px solid red;
+        outline: 1px solid $c-grayish-green;
+
+        .toggle-menu {
+            font-size: $fs-400;
+            width: 100%;
+            height: 64px;
+        }
+
+        .menu {
+            width: 100%;
+            height: 100%;
+            padding-inline: 2em;
+        }
     }
 
     &__grid {
         grid-area: grid;
-        outline: 2px solid red;
     }
 }
