@@ -9,7 +9,7 @@
 
     &__button {
         width: 100%;
-        font-weight: $fw-medium;
+        font-weight: $fw-regular;
         font-size: $fs-300;
         padding-block: 1em;
         background-color: transparent;
@@ -26,7 +26,7 @@
         .option {
             padding-block: .2em;
             padding-inline: .8em;
-            font-weight: $fw-regular;
+            font-weight: $fw-light;
             color: $c-light-gray;
             cursor: pointer;
             filter: brightness(.8);

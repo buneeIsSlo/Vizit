@@ -1,0 +1,22 @@
+@use "../utilities/" as *;
+
+
+.visualize {
+    font-size: $fs-300;
+    font-weight: $fw-medium;
+    width: 100%;
+    padding: .8em;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+
+    &__text {
+        color: #10100E;
+    }
+
+    & svg {
+        transform: scale(.75);
+    }
+}

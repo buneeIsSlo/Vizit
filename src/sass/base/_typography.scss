@@ -6,6 +6,7 @@ html {
 
 body {
     font-family: $ff-primary, 'Franklin Gothic Medium', Arial, sans-serif;
+    font-weight: $fw-regular;
     color: $c-whool-white;
 }
 
@@ -18,4 +19,8 @@ h2 {
     font-size: $fs-600;
     font-weight: $fw-medium;
     text-transform: uppercase;
+}
+
+button {
+    font-family: $ff-primary, 'Franklin Gothic Medium', Arial, sans-serif;
 }

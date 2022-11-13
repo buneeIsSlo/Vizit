@@ -1,0 +1,12 @@
+@use "../utilities/" as *;
+
+
+.secondary-button {
+    font-size: $fs-300;
+    font-weight: $fw-regular;
+    padding: 1em;
+    color: $c-whool-white;
+    background-color: transparent;
+    outline: 2px solid $c-grayish-green;
+    flex-grow: 1;
+}

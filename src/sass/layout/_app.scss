@@ -45,18 +45,6 @@ body {
     &__menu {
         grid-area: menu;
         outline: 1px solid $c-grayish-green;
-
-        .toggle-menu {
-            font-size: $fs-400;
-            width: 100%;
-            height: 64px;
-        }
-
-        .menu {
-            width: 100%;
-            height: 100%;
-            padding-inline: 2em;
-        }
     }
 
     &__grid {
