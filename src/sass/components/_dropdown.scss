@@ -28,6 +28,12 @@
             padding-inline: .8em;
             font-weight: $fw-regular;
             color: $c-light-gray;
+            cursor: pointer;
+            filter: brightness(.8);
+
+            &:hover {
+                filter: brightness(1);
+            }
         }
 
     }
