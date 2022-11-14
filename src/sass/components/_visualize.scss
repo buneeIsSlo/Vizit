@@ -5,12 +5,14 @@
     font-size: $fs-300;
     font-weight: $fw-medium;
     width: 100%;
-    padding: .8em;
+    padding-block: 1em;
     letter-spacing: 5px;
-    text-transform: uppercase;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1em;
+    background-color: $c-whool-white;
+    text-transform: uppercase;
 
     &__text {
         color: #10100E;

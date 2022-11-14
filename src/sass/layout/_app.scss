@@ -10,7 +10,6 @@ body {
     height: 100%;
     background-color: $c-chaos-black;
     display: grid;
-    outline: 2px solid red;
     grid-template-areas: 
     "logo title"
     "menu menu"
@@ -24,18 +23,23 @@ body {
         "menu grid";
         grid-template-rows: 80px 1fr;
         grid-template-columns: 250px 1fr;
-        background-color: #ffffe6;
+        background-color: $c-chaos-black;
     }
 
     &__logo {
         grid-area: logo;
-        outline: 2px solid red;
+        // outline: 2px solid red;
+        padding-block: 1rem;
+        padding-inline: 1.5rem;
+        display: flex;
+        align-items: center;
+        border-right: 1px solid $c-grayish-green;
     }
 
     &__title {
         grid-area: title;
-        outline: 2px solid red;
         padding: 1em;
+        // outline: 2px solid blue;
 
         .title {
             text-align: center;
@@ -43,6 +47,7 @@ body {
     }
 
     &__menu {
+        // margin-top: 2rem;
         grid-area: menu;
         outline: 1px solid $c-grayish-green;
     }

@@ -7,21 +7,37 @@
         font-size: $fs-400;
         width: 100%;
         height: 64px;
+        background-color: transparent;
+        color: $c-whool-white;
+        outline: 1px dashed $c-grayish-green;
     }
 
     .menu {
         width: 100%;
-        height: 100%;
+        height: auto;
+        max-width: 425px;
+        max-height: 200px;
+        overflow-y: scroll;
         padding-inline: 2em;
+        margin-inline: auto;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
-
+        justify-content: space-between;
+        gap: 10rem;
         &__top-controls {
+            
+            & > * {
+                margin-top: 2em;
+            }
+
             .grid-controls {
                 display: flex;
                 gap: 2em;                
             }
+        }
+
+        &__bottom-controls {
+            outline: 2px solid yellow;
         }
     }
 }

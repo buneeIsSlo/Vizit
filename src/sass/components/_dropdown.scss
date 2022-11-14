@@ -5,7 +5,6 @@
     width: 100%;
     outline: 2px solid $c-grayish-green;
     padding-inline: .8em;
-    padding-bottom: .9em;
 
     &__button {
         width: 100%;
@@ -16,12 +15,15 @@
         color: $c-whool-white;
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     &__menu {
         display: flex;
         flex-direction: column;
         gap: .4em;
+        max-height: 0;
+        overflow-y: hidden;
 
         .option {
             padding-block: .2em;
