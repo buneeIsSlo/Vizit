@@ -19,6 +19,10 @@ h2 {
     font-size: $fs-600;
     font-weight: $fw-medium;
     text-transform: uppercase;
+
+    @include breakpoint(lg) {
+        font-size: $fs-700;
+    }
 }
 
 button {

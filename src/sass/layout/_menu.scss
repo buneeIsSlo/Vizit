@@ -2,6 +2,8 @@
 
 
 .app__menu {
+    display: flex;
+    flex-direction: column;
 
     .toggle-menu {
         font-size: $fs-400;
@@ -10,22 +12,34 @@
         background-color: transparent;
         color: $c-wool-white;
         outline: 1px dashed $c-grayish-green;
+
+        @include breakpoint(lg) {
+            display: none;
+        }
     }
 
     .menu {
         width: 100%;
         height: auto;
-        max-width: 425px;
+        max-width: 375px;
         max-height: 200px;
         overflow-y: scroll;
         padding-inline: 2em;
         margin-inline: auto;
         display: flex;
-        flex-direction: column;
         justify-content: space-between;
-        gap: 10rem;
+        flex-direction: column;
+        flex-grow: 1;
+        gap: 2rem;
+
+        @include breakpoint(lg) {
+            max-height: 100vh;
+            overflow-y: auto;
+            // padding: 1em;
+        }
+
         &__top-controls {
-            
+
             & > * {
                 margin-top: 2em;
             }
@@ -37,7 +51,7 @@
         }
 
         &__bottom-controls {
-            outline: 2px solid yellow;
+            margin-bottom: 2rem;
         }
     }
 }

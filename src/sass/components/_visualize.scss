@@ -6,19 +6,29 @@
     font-weight: $fw-medium;
     width: 100%;
     padding-block: 1em;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1em;
     background-color: $c-wool-white;
     text-transform: uppercase;
+    transition: transform .2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    &:hover {
+        transform: scale(1.01);
+    }
 
     &__text {
         color: #10100E;
+        letter-spacing: 3px;
     }
 
     & svg {
-        transform: scale(.75);
+        transform: scale(0.65);
+
+        @include breakpoint(lg) {
+            transform: scale(0.75) rotate(-90deg);
+        }
     }
 }

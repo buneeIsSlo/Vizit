@@ -7,6 +7,10 @@
     padding: 1em;
     color: $c-wool-white;
     background-color: transparent;
-    outline: 2px solid $c-grayish-green;
+    outline: 1px solid $c-wool-white;
     flex-grow: 1;
+
+    @include breakpoint(lg) {
+        padding: 0.8em 1em;
+    }
 }
