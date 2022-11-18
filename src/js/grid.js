@@ -1,5 +1,9 @@
+import { Node } from "./Node";
+
 export const grid = () => {
     const gridContainer = document.querySelector(".grid");
+    const nodesArray = new Array();
+    let drawState = false;
 
     const renderGrid = () => {
         gridContainer.innerHTML = "";
@@ -13,24 +17,63 @@ export const grid = () => {
     }
 
     const populateGrid = (rows, columns) => {
-
         gridContainer.style.setProperty("--rows", rows);
         gridContainer.style.setProperty("--columns", columns);
 
         for (let i = 0; i < rows; i++) {
+            nodesArray.push([]);
+
             for (let j = 0; j < columns; j++) {
-                let node = createNode();
+                let node = Node().createNode();
+
+                addNodeProperties(node);
+
+                nodesArray[i].push(node);
+
                 gridContainer.appendChild(node);
             }
         }
+
+        addStartandEndNodes(1, 1, nodesArray.length - 2, nodesArray[0].length - 2);
     }
 
-    const createNode = () => {
-        const node = document.createElement("button");
-        node.classList.add("grid__node");
+    const addNodeProperties = (node) => {
+        node.addEventListener("mouseenter", () => {
+            if (!drawState) return;
 
-        return node;
+            toggleNode(node);
+        });
+
+        node.addEventListener('mousedown', () => {
+            toggleNode(node);
+        });
     }
+
+    const toggleNode = (node) => {
+        if (node.classList.contains("empty")) {
+            node.className = "grid__node wall";
+        }
+        else if (node.classList.contains("wall")) {
+            node.className = "grid__node empty";
+        }
+    }
+
+    const addStartandEndNodes = (sRow, sCol, eRow, eCol) => {
+        let startNode = nodesArray[sRow][sCol];
+        let endNode = nodesArray[eRow][eCol];
+
+        startNode.className = "grid__node start";
+        startNode.draggable = true;
+        endNode.className = "grid__node end";
+        endNode.draggable = true;
+    }
+
+    gridContainer.addEventListener("mousedown", () => drawState = true);
+    gridContainer.addEventListener("mouseup", () => drawState = false);
+    gridContainer.addEventListener("mouseleave", () => drawState = false);
+
+
+
 
     return {
         renderGrid,
