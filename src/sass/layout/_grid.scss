@@ -12,7 +12,6 @@
         grid-template-columns: repeat(var(--columns), 1fr);
 
         &__node {
-            background-color: $c-chaos-black;
             outline: 1px solid $c-wool-white;
             cursor: crosshair;
         }

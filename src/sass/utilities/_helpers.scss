@@ -1,0 +1,19 @@
+@use "variables" as *;
+
+.wall {
+    background-color: $c-wool-white;
+}
+
+.empty {
+    background-color: $c-chaos-black;
+}
+
+.start {
+    background-color: #00FF47;
+    cursor:move !important;
+}
+
+.end {
+    background-color: crimson;
+    cursor:move !important;
+}
