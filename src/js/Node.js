@@ -10,8 +10,6 @@ export const Node = () => {
     }
 
     return {
-        posX,
-        posY,
         createNode,
     }
 }
