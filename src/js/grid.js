@@ -61,51 +61,64 @@ export const grid = () => {
     const addStartandEndNodes = (sRow, sCol, eRow, eCol) => {
         let startNode = nodesArray[sRow][sCol];
         let endNode = nodesArray[eRow][eCol];
-        let nodes = document.querySelectorAll(".grid__node");
-        let dragged = null;
 
         startNode.className = "grid__node start";
         startNode.draggable = true;
         endNode.className = "grid__node end";
         endNode.draggable = true;
 
-        startNode.addEventListener("dragstart", (event) => {
-            dragged = event.target;
-        })
+        handleDragAndDrop([startNode, endNode]);
+    }
 
-        nodes.forEach(node => {
+    const handleDragAndDrop = (draggableNodes) => {
+        let draggedNode = null;
+        let allNodes = document.querySelectorAll(".grid__node");
+
+        draggableNodes.forEach((node) => {
+            node.addEventListener("dragstart", (event) => {
+                draggedNode = event.target;
+            });
+        });
+
+        allNodes.forEach((node) => {
             node.addEventListener("dragover", (event) => {
-                event.preventDefault()
-            })
-
-            node.addEventListener("dragend", (event) => {
-                if (event.target.classList.contains("start")) {
-                    console.log(event.toElement);
-                    node.className = "grid__node start"
+                if (node.classList.contains("start") || node.classList.contains("end")) {
+                    return;
                 }
-                node.className = "grid__node empty";
 
-                node.draggable = false;
-            })
+                event.preventDefault();
+            });
 
             node.addEventListener("drop", (event) => {
-                event.preventDefault();
-                if (event.target.classList.contains("start")) {
-                    node.className = "grid__node start"
-                }
-                else if (event.toElement.classList.contains("wall") || event.toElement.classList.contains("empty")) {
-                    event.target.className = "grid__node start";
-                    event.target.draggable = true;
+                if (node.classList.contains("start") || node.classList.contains("end")) {
+                    return;
                 }
 
+                event.preventDefault();
+                let targetNode = event.target;
+                let targetClass = draggedNode.className;
+
+                // console.log(targetClass);
+
+                draggedNode.className = "grid__node empty";
+                draggedNode.removeAttribute("draggable");
+
+                // console.log(targetClass);
+                targetNode.className = targetClass;
+                targetNode.draggable = true;
+                targetNode.addEventListener("dragstart", (event) => {
+                    draggedNode = event.target;
+                })
             });
         });
     }
 
     gridContainer.addEventListener("mousedown", (event) => {
-        if (!event.target.classList.contains("start")) {
-            drawState = true;
+        if (event.target.classList.contains("start") || event.target.classList.contains("end")) {
+            return;
         }
+
+        drawState = true;
     });
     gridContainer.addEventListener("mouseup", () => drawState = false);
     gridContainer.addEventListener("mouseleave", () => drawState = false);
