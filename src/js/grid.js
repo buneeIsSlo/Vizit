@@ -3,10 +3,10 @@ import { Node } from "./Node";
 export const grid = () => {
     // Constants
     const gridContainer = document.querySelector(".grid");
-    const nodesArray = new Array();
 
     // Variables
-    let drawState = false,
+    let nodesArray = null,
+        drawState = false,
         emptyClass = "grid__node empty",
         wallClass = "grid__node wall",
         startClass = "grid__node start",
@@ -14,6 +14,7 @@ export const grid = () => {
 
     const renderGrid = () => {
         gridContainer.innerHTML = "";
+        nodesArray = new Array();
 
         const size = gridContainer.clientWidth > 500 ? 35 : 30;
 
@@ -129,6 +130,7 @@ export const grid = () => {
 
     return {
         renderGrid,
+        nodesArray
     }
 }
 
