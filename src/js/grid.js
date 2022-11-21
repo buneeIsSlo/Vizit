@@ -1,9 +1,16 @@
 import { Node } from "./Node";
 
 export const grid = () => {
+    // Constants
     const gridContainer = document.querySelector(".grid");
     const nodesArray = new Array();
-    let drawState = false;
+
+    // Variables
+    let drawState = false,
+        emptyClass = "grid__node empty",
+        wallClass = "grid__node wall",
+        startClass = "grid__node start",
+        endClass = "grid__node end";
 
     const renderGrid = () => {
         gridContainer.innerHTML = "";
@@ -51,10 +58,10 @@ export const grid = () => {
 
     const toggleNode = (node) => {
         if (node.classList.contains("empty")) {
-            node.className = "grid__node wall";
+            node.className = wallClass;
         }
         else if (node.classList.contains("wall")) {
-            node.className = "grid__node empty";
+            node.className = emptyClass;
         }
     }
 
@@ -62,9 +69,9 @@ export const grid = () => {
         let startNode = nodesArray[sRow][sCol];
         let endNode = nodesArray[eRow][eCol];
 
-        startNode.className = "grid__node start";
+        startNode.className = startClass;
         startNode.draggable = true;
-        endNode.className = "grid__node end";
+        endNode.className = endClass;
         endNode.draggable = true;
 
         handleDragAndDrop([startNode, endNode]);
@@ -98,17 +105,14 @@ export const grid = () => {
                 let targetNode = event.target;
                 let targetClass = draggedNode.className;
 
-                // console.log(targetClass);
-
-                draggedNode.className = "grid__node empty";
+                draggedNode.className = emptyClass;
                 draggedNode.removeAttribute("draggable");
 
-                // console.log(targetClass);
                 targetNode.className = targetClass;
                 targetNode.draggable = true;
                 targetNode.addEventListener("dragstart", (event) => {
                     draggedNode = event.target;
-                })
+                });
             });
         });
     }
