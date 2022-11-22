@@ -1,4 +1,5 @@
 import { Node } from "./Node";
+import { BreadFirstFinder } from "./Path-finding algorithms/BreadthFirstFinder";
 
 export const grid = () => {
     // Constants
@@ -10,7 +11,8 @@ export const grid = () => {
         emptyClass = "grid__node empty",
         wallClass = "grid__node wall",
         startClass = "grid__node start",
-        endClass = "grid__node end";
+        endClass = "grid__node end",
+        startRow, startCol, endRow, endCol;
 
     const renderGrid = () => {
         gridContainer.innerHTML = "";
@@ -24,6 +26,17 @@ export const grid = () => {
         populateGrid(rows, columns);
     }
 
+    const visualize = () => {
+        const startNode = document.querySelector(".grid__node.start");
+        const endNode = document.querySelector(".grid__node.end");
+
+        console.log(startNode, endNode);
+
+        BreadFirstFinder().findPath(nodesArray,
+            +startNode.dataset.row, +startNode.dataset.col,
+            +endNode.dataset.row, +endNode.dataset.col);
+    }
+
     const populateGrid = (rows, columns) => {
         gridContainer.style.setProperty("--rows", rows);
         gridContainer.style.setProperty("--columns", columns);
@@ -34,7 +47,7 @@ export const grid = () => {
             for (let j = 0; j < columns; j++) {
                 let node = Node().createNode();
 
-                addNodeProperties(node);
+                addNodeProperties(node, i, j);
 
                 nodesArray[i].push(node);
 
@@ -42,10 +55,15 @@ export const grid = () => {
             }
         }
 
-        addStartandEndNodes(1, 1, nodesArray.length - 2, nodesArray[0].length - 2);
+        [startRow, startCol] = [1, 1];
+        [endRow, endCol] = [nodesArray.length - 2, nodesArray[0].length - 2];
+        addStartandEndNodes(startRow, startCol, endRow, endCol);
     }
 
-    const addNodeProperties = (node) => {
+    const addNodeProperties = (node, row, col) => {
+        node.dataset.row = row;
+        node.dataset.col = col;
+
         node.addEventListener("mouseenter", () => {
             if (!drawState) return;
 
@@ -114,6 +132,7 @@ export const grid = () => {
                 targetNode.addEventListener("dragstart", (event) => {
                     draggedNode = event.target;
                 });
+                console.log(+targetNode.dataset.row, +targetNode.dataset.col);
             });
         });
     }
@@ -130,7 +149,7 @@ export const grid = () => {
 
     return {
         renderGrid,
-        nodesArray
+        visualize,
     }
 }
 
