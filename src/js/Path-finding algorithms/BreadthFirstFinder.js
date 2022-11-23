@@ -32,7 +32,7 @@ export const BreadFirstFinder = () => {
             for (let neighbour of neighbourNodes) {
                 const [nRow, nCol] = [neighbour.row, neighbour.col];
 
-                if (nRow < 0 || nCol < 0 || nRow >= grid.length || nCol >= grid[0].length) {
+                if (nRow < 0 || nCol < 0 || nRow > grid.length - 1 || nCol > grid[0].length - 1) {
                     continue;
                 }
 
@@ -47,6 +47,9 @@ export const BreadFirstFinder = () => {
 
             await addDelay(0.05);
         }
+
+        const path = getPath(parentMap, sRow, sCol, eRow, eCol);
+        animatePath(grid, path);
     }
 
     const animateSearch = async (node) => {
@@ -59,6 +62,32 @@ export const BreadFirstFinder = () => {
         return new Promise((resolve) => {
             return setTimeout(resolve, seconds * 100);
         });
+    }
+
+    const getPath = (map, sRow, sCol, eRow, eCol) => {
+        const path = [];
+        let curNodePos = [eRow, eCol];
+        let curNodeKey = `${eRow}, ${eCol}`;
+        let startKey = `${sRow}, ${sCol}`;
+
+        while (startKey !== curNodeKey) {
+            path.unshift(curNodePos);
+
+            const tmpArr = map.get(curNodeKey);
+            curNodePos = tmpArr;
+            curNodeKey = `${tmpArr[0]}, ${tmpArr[1]}`;
+        }
+
+        return path;
+    }
+
+    const animatePath = async (grid, path) => {
+        for (let arr of path) {
+            await addDelay(0.3);
+
+            const [row, col] = arr;
+            grid[row][col].style.backgroundColor = "orange";
+        }
     }
 
     return {
