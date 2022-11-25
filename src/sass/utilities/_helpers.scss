@@ -17,3 +17,16 @@
     background-color: crimson;
     cursor:move !important;
 }
+
+.searching {
+    background-color: yellow;
+}
+
+.visited {
+    background-color: blue;
+}
+
+.path {
+    background-color: orange;
+    position: relative;
+}

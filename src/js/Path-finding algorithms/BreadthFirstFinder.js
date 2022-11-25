@@ -1,3 +1,5 @@
+import { switchNodeClassTo } from "../Util";
+
 export const BreadFirstFinder = () => {
 
     const findPath = async (grid, sRow, sCol, eRow, eCol) => {
@@ -53,9 +55,13 @@ export const BreadFirstFinder = () => {
     }
 
     const animateSearch = async (node) => {
-        node.style.backgroundColor = "yellow";
+        if (node.classList.contains("start") || node.classList.contains("end")) {
+            return;
+        }
+
+        switchNodeClassTo("searching", node);
         await addDelay(0.1);
-        node.style.backgroundColor = "blue";
+        switchNodeClassTo("visited", node);
     }
 
     const addDelay = async (seconds) => {
@@ -83,10 +89,15 @@ export const BreadFirstFinder = () => {
 
     const animatePath = async (grid, path) => {
         for (let arr of path) {
-            await addDelay(0.3);
-
             const [row, col] = arr;
-            grid[row][col].style.backgroundColor = "orange";
+            const node = grid[row][col];
+
+            if (node.classList.contains("start") || node.classList.contains("end")) {
+                continue;
+            }
+            switchNodeClassTo("path", grid[row][col]);
+
+            await addDelay(0.3);
         }
     }
 
