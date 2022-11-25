@@ -28,6 +28,11 @@ export const grid = () => {
     }
 
     const visualize = () => {
+        if (isVisualizing()) {
+            return;
+        }
+        clearPath();
+
         const startNode = document.querySelector(".grid__node.start");
         const endNode = document.querySelector(".grid__node.end");
 
