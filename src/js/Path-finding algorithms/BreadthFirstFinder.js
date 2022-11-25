@@ -1,4 +1,4 @@
-import { switchNodeClassTo } from "../Util";
+import { switchNodeClassTo, setVisualizingState } from "../Util";
 
 export const BreadFirstFinder = () => {
 
@@ -99,6 +99,8 @@ export const BreadFirstFinder = () => {
 
             await addDelay(0.3);
         }
+
+        setVisualizingState(false);
     }
 
     return {

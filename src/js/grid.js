@@ -1,4 +1,5 @@
 import { Node } from "./Node";
+import { switchNodeClassTo, isVisualizing, setVisualizingState } from "./Util";
 import { BreadFirstFinder } from "./Path-finding algorithms/BreadthFirstFinder";
 
 export const grid = () => {
@@ -30,7 +31,7 @@ export const grid = () => {
         const startNode = document.querySelector(".grid__node.start");
         const endNode = document.querySelector(".grid__node.end");
 
-        console.log(startNode, endNode);
+        setVisualizingState(true);
 
         BreadFirstFinder().findPath(nodesArray,
             +startNode.dataset.row, +startNode.dataset.col,
@@ -137,6 +138,35 @@ export const grid = () => {
         });
     }
 
+    const clearGrid = () => {
+        if (isVisualizing()) {
+            return;
+        }
+
+        const allNodes = document.querySelectorAll(".grid__node");
+
+        allNodes.forEach((node) => {
+            if (node.classList.contains("start") || node.classList.contains("end")) {
+                return;
+            }
+
+            switchNodeClassTo("empty", node);
+        });
+    }
+
+    const clearPath = () => {
+        if (isVisualizing()) {
+            return;
+        }
+
+        const pathNodes = Array.from(document.querySelectorAll(".grid__node.path"));
+        const visitedNodes = Array.from(document.querySelectorAll(".grid__node.visited"));
+
+        [...pathNodes, ...visitedNodes].forEach((node) => {
+            switchNodeClassTo("empty", node);
+        });
+    }
+
     gridContainer.addEventListener("mousedown", (event) => {
         if (event.target.classList.contains("start") || event.target.classList.contains("end")) {
             return;
@@ -149,6 +179,8 @@ export const grid = () => {
 
     return {
         renderGrid,
+        clearGrid,
+        clearPath,
         visualize,
     }
 }
