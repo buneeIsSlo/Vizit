@@ -7,6 +7,7 @@ const appGrid = grid();
 const visualizeBtn = document.querySelector(".visualize");
 const clearGridBtn = document.querySelector(".clear-grid");
 const clearPathBtn = document.querySelector(".clear-path");
+const dropdowns = document.querySelectorAll(".dropdown");
 
 appGrid.renderGrid();
 window.addEventListener("resize", () => appGrid.renderGrid());
@@ -21,4 +22,26 @@ clearPathBtn.addEventListener("click", () => {
 visualizeBtn.addEventListener("click", () => {
     console.log("vizzing");
     appGrid.visualize();
+});
+
+const handleDropdown = (dropdown) => {
+    const dropdownBtn = dropdown.querySelector(".dropdown__button");
+    const dropdownTitle = dropdownBtn.querySelector(".dropdown__button-text");
+    const dropdownMenu = dropdown.querySelector(".dropdown__menu");
+    const menuOptions = dropdownMenu.querySelectorAll(".option");
+
+    dropdownBtn.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("open");
+
+        menuOptions.forEach((option) => {
+            option.addEventListener("click", () => {
+                dropdownMenu.classList.remove("open");
+                dropdownTitle.innerText = option.innerText;
+            });
+        });
+    });
+};
+
+dropdowns.forEach((dropdown) => {
+    handleDropdown(dropdown);
 });
