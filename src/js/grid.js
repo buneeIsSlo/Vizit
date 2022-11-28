@@ -1,6 +1,7 @@
 import { Node } from "./Node";
 import { switchNodeClassTo, isVisualizing, setVisualizingState } from "./Util";
 import { BreadFirstFinder } from "./Path-finding algorithms/BreadthFirstFinder";
+import { AStarFinder } from "./Path-finding algorithms/AStarFinder";
 
 export const grid = () => {
     // Constants
@@ -38,7 +39,10 @@ export const grid = () => {
 
         setVisualizingState(true);
 
-        BreadFirstFinder().findPath(nodesArray,
+        // BreadFirstFinder().findPath(nodesArray,
+        //     +startNode.dataset.row, +startNode.dataset.col,
+        //     +endNode.dataset.row, +endNode.dataset.col);
+        AStarFinder().findPath(nodesArray,
             +startNode.dataset.row, +startNode.dataset.col,
             +endNode.dataset.row, +endNode.dataset.col);
     }
