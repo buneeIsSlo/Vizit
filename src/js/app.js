@@ -20,8 +20,12 @@ clearPathBtn.addEventListener("click", () => {
 })
 
 visualizeBtn.addEventListener("click", () => {
+    const algoType = visualizeBtn.dataset.algoType;
+
+    if (!algoType) return;
+
     console.log("vizzing");
-    appGrid.visualize();
+    appGrid.visualize(algoType);
 });
 
 const handleDropdown = (dropdown) => {
@@ -35,6 +39,8 @@ const handleDropdown = (dropdown) => {
 
         menuOptions.forEach((option) => {
             option.addEventListener("click", () => {
+                visualizeBtn.dataset.algoType = option.dataset.algo;
+
                 dropdownMenu.classList.remove("open");
                 dropdownTitle.innerText = option.innerText;
             });

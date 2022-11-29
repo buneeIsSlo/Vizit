@@ -5,7 +5,6 @@ export const AStarFinder = () => {
     const findPath = async (grid, sRow, sCol, eRow, eCol) => {
         const queue = new PriorityQueue;
         const gCostMap = new Map();
-        const hCostMap = new Map();
         const parentMap = new Map();
         parentMap.set(`${sRow}, ${sCol}`, [sRow, sCol]);
         gCostMap.set(`${sRow}, ${sCol}`, 0);
@@ -15,8 +14,6 @@ export const AStarFinder = () => {
         while (!queue.isEmpty()) {
             const [curRow, curCol] = queue.dequeue().element;
             const curKey = `${curRow}, ${curCol}`;
-            const curNode = [curRow, curCol];
-            console.log(curKey);
 
             if (grid[curRow][curCol].classList.contains("wall")) {
                 continue;
@@ -59,7 +56,6 @@ export const AStarFinder = () => {
                 const distance = distRow + distCol;
                 const fCost = cost + distance;
 
-                hCostMap.set(key, fCost);
                 queue.enqueue([nRow, nCol], fCost);
             }
 

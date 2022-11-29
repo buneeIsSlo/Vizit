@@ -1,6 +1,6 @@
 import { Node } from "./Node";
 import { switchNodeClassTo, isVisualizing, setVisualizingState } from "./Util";
-import { BreadFirstFinder } from "./Path-finding algorithms/BreadthFirstFinder";
+import { BreadthFirstFinder } from "./Path-finding algorithms/BreadthFirstFinder";
 import { AStarFinder } from "./Path-finding algorithms/AStarFinder";
 
 export const grid = () => {
@@ -28,23 +28,41 @@ export const grid = () => {
         populateGrid(rows, columns);
     }
 
-    const visualize = () => {
-        if (isVisualizing()) {
+    const visualize = (algoType) => {
+        if (!algoType || isVisualizing()) {
             return;
         }
         clearPath();
 
         const startNode = document.querySelector(".grid__node.start");
         const endNode = document.querySelector(".grid__node.end");
+        const obj = {
+            grid: nodesArray,
+            sRow: +startNode.dataset.row,
+            sCol: +startNode.dataset.col,
+            eRow: +endNode.dataset.row,
+            eCol: +endNode.dataset.col
+        }
 
         setVisualizingState(true);
 
-        // BreadFirstFinder().findPath(nodesArray,
-        //     +startNode.dataset.row, +startNode.dataset.col,
-        //     +endNode.dataset.row, +endNode.dataset.col);
-        AStarFinder().findPath(nodesArray,
-            +startNode.dataset.row, +startNode.dataset.col,
-            +endNode.dataset.row, +endNode.dataset.col);
+        switch (algoType) {
+            case "A*":
+                AStarSearch(obj);
+                break;
+            case "BFS":
+                BreadthFirstSearch(obj);
+                break;
+            default:
+                return;
+        }
+    }
+
+    const AStarSearch = (obj) => {
+        AStarFinder().findPath(obj.grid, obj.sRow, obj.sCol, obj.eRow, obj.eCol);
+    }
+    const BreadthFirstSearch = (obj) => {
+        BreadthFirstFinder().findPath(obj.grid, obj.sRow, obj.sCol, obj.eRow, obj.eCol);
     }
 
     const populateGrid = (rows, columns) => {

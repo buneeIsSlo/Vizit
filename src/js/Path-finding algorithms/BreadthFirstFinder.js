@@ -1,6 +1,6 @@
 import { switchNodeClassTo, setVisualizingState } from "../Util";
 
-export const BreadFirstFinder = () => {
+export const BreadthFirstFinder = () => {
 
     const findPath = async (grid, sRow, sCol, eRow, eCol) => {
         const queue = [[sRow, sCol]];
