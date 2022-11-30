@@ -41,7 +41,8 @@ export const AStarFinder = () => {
                 }
 
                 const key = `${nRow}, ${nCol}`;
-                const cost = gCostMap.get(curKey);
+                const cost = gCostMap.get(curKey) + ((nRow - sRow === 0 || nCol - sCol === 0) ? 1 : Math.SQRT2);
+
                 if (parentMap.has(key) || cost > gCostMap.get(key)) {
                     continue;
                 }
@@ -49,8 +50,6 @@ export const AStarFinder = () => {
                 parentMap.set(key, [curRow, curCol]);
                 gCostMap.set(key, cost);
 
-                // const distRow = Math.pow(eRow - nRow, 2);
-                // const distCol = Math.pow(eCol - nCol, 2);
                 const distRow = Math.abs(eRow - nRow);
                 const distCol = Math.abs(eCol - nCol);
                 const distance = distRow + distCol;
