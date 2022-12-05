@@ -25,7 +25,7 @@ export const animateSearch = async (node) => {
     }
 
     switchNodeClassTo("searching", node);
-    await addDelay(0.1);
+    await addDelay(1);
     switchNodeClassTo("visited", node);
 }
 
