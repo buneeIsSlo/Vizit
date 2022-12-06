@@ -29,6 +29,7 @@ visualizeBtn.addEventListener("click", () => {
 });
 
 const handleDropdown = (dropdown) => {
+    const dropdownType = dropdown.dataset.dropdownType;
     const dropdownBtn = dropdown.querySelector(".dropdown__button");
     const dropdownTitle = dropdownBtn.querySelector(".dropdown__button-text");
     const dropdownMenu = dropdown.querySelector(".dropdown__menu");
@@ -39,7 +40,10 @@ const handleDropdown = (dropdown) => {
 
         menuOptions.forEach((option) => {
             option.addEventListener("click", () => {
-                visualizeBtn.dataset.algoType = option.dataset.algo;
+                if (dropdownType === "finders")
+                    visualizeBtn.dataset.algoType = option.dataset.algo;
+                if (dropdownType === "mazers")
+                    appGrid.createMaze();
 
                 dropdownMenu.classList.remove("open");
                 dropdownTitle.innerText = option.innerText;

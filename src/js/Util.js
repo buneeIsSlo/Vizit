@@ -64,6 +64,9 @@ export const animatePath = async (grid, path) => {
     setVisualizingState(false);
 }
 
+export const isStartOrEndNode = (node) => {
+    return node.classList.contains("start") || node.classList.contains("end");
+}
 
 class QueueElement {
     constructor(element, priority) {

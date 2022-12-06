@@ -2,6 +2,7 @@ import { Node } from "./Node";
 import { switchNodeClassTo, isVisualizing, setVisualizingState } from "./Util";
 import { BreadthFirstFinder } from "./Path-finding algorithms/BreadthFirstFinder";
 import { AStarFinder } from "./Path-finding algorithms/AStarFinder";
+import { RecursiveBacktracker } from "./Maze algorithms/RecursiveBacktracker";
 
 export const grid = () => {
     // Constants
@@ -20,12 +21,18 @@ export const grid = () => {
         gridContainer.innerHTML = "";
         nodesArray = new Array();
 
-        const size = gridContainer.clientWidth > 500 ? 35 : 30;
+        const size = gridContainer.clientWidth > 500 ? 25 : 30;
 
         let rows = Math.floor(gridContainer.clientHeight / size);
         let columns = Math.floor(gridContainer.clientWidth / size);
 
         populateGrid(rows, columns);
+    }
+
+    const createMaze = () => {
+        clearGrid();
+
+        RecursiveBacktracker().generateMaze(nodesArray, 0, 0);
     }
 
     const visualize = (algoType) => {
@@ -209,6 +216,7 @@ export const grid = () => {
         clearGrid,
         clearPath,
         visualize,
+        createMaze,
     }
 }
 
