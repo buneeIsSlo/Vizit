@@ -3,6 +3,7 @@ import { switchNodeClassTo, isVisualizing, setVisualizingState } from "./Util";
 import { BreadthFirstFinder } from "./Path-finding algorithms/BreadthFirstFinder";
 import { AStarFinder } from "./Path-finding algorithms/AStarFinder";
 import { RecursiveBacktracker } from "./Maze algorithms/RecursiveBacktracker";
+import { Prims } from "./Maze algorithms/Prims";
 
 export const grid = () => {
     // Constants
@@ -32,7 +33,8 @@ export const grid = () => {
     const createMaze = () => {
         clearGrid();
 
-        RecursiveBacktracker().generateMaze(nodesArray, 0, 0);
+        // RecursiveBacktracker().generateMaze(nodesArray, 0, 0);
+        Prims().generateMaze(nodesArray, 0, 0);
     }
 
     const visualize = (algoType) => {
