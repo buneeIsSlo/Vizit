@@ -30,11 +30,19 @@ export const grid = () => {
         populateGrid(rows, columns);
     }
 
-    const createMaze = () => {
+    const createMaze = (algoType) => {
         clearGrid();
 
-        // RecursiveBacktracker().generateMaze(nodesArray, 0, 0);
-        Prims().generateMaze(nodesArray, 0, 0);
+        switch (algoType) {
+            case "prims":
+                Prims().generateMaze(nodesArray, 0, 0);
+                break;
+            case "recursive":
+                RecursiveBacktracker().generateMaze(nodesArray, 0, 0);
+                break;
+            default:
+                return;
+        }
     }
 
     const visualize = (algoType) => {
@@ -57,21 +65,14 @@ export const grid = () => {
 
         switch (algoType) {
             case "A*":
-                AStarSearch(obj);
+                AStarFinder().findPath(obj.grid, obj.sRow, obj.sCol, obj.eRow, obj.eCol);
                 break;
             case "BFS":
-                BreadthFirstSearch(obj);
+                BreadthFirstFinder().findPath(obj.grid, obj.sRow, obj.sCol, obj.eRow, obj.eCol);
                 break;
             default:
                 return;
         }
-    }
-
-    const AStarSearch = (obj) => {
-        AStarFinder().findPath(obj.grid, obj.sRow, obj.sCol, obj.eRow, obj.eCol);
-    }
-    const BreadthFirstSearch = (obj) => {
-        BreadthFirstFinder().findPath(obj.grid, obj.sRow, obj.sCol, obj.eRow, obj.eCol);
     }
 
     const populateGrid = (rows, columns) => {

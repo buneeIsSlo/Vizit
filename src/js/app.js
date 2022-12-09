@@ -37,17 +37,19 @@ const handleDropdown = (dropdown) => {
 
     dropdownBtn.addEventListener("click", () => {
         dropdownMenu.classList.toggle("open");
+    });
 
-        menuOptions.forEach((option) => {
-            option.addEventListener("click", () => {
-                if (dropdownType === "finders")
-                    visualizeBtn.dataset.algoType = option.dataset.algo;
-                if (dropdownType === "mazers")
-                    appGrid.createMaze();
-
-                dropdownMenu.classList.remove("open");
+    menuOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+            if (dropdownType === "finders") {
                 dropdownTitle.innerText = option.innerText;
-            });
+                visualizeBtn.dataset.algoType = option.dataset.algo;
+            }
+            if (dropdownType === "mazers") {
+                appGrid.createMaze(option.dataset.algo);
+            }
+
+            dropdownMenu.classList.remove("open");
         });
     });
 };
