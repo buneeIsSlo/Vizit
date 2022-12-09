@@ -1,3 +1,14 @@
+@use "variables" as * ;
+
+@keyframes wallAnimation {
+  0% {
+    background-color: #a0fecc;
+  }
+
+  100% {
+    background-color: $c-wool-white;
+  }
+}
 
 @keyframes pulse {
     0% {
