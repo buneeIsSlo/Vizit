@@ -12,10 +12,12 @@ const dropdowns = document.querySelectorAll(".dropdown");
 appGrid.renderGrid();
 window.addEventListener("resize", () => appGrid.renderGrid());
 
-clearGridBtn.addEventListener("click", () => {
+clearGridBtn.addEventListener("click", (event) => {
+    createRipple(clearGridBtn, event);
     appGrid.clearGrid();
 });
-clearPathBtn.addEventListener("click", () => {
+clearPathBtn.addEventListener("click", (event) => {
+    createRipple(clearPathBtn, event);
     appGrid.clearPath();
 })
 
@@ -31,11 +33,14 @@ visualizeBtn.addEventListener("click", () => {
 const handleDropdown = (dropdown) => {
     const dropdownType = dropdown.dataset.dropdownType;
     const dropdownBtn = dropdown.querySelector(".dropdown__button");
+    const dropdownChevron = dropdown.querySelector(".dropdown__chevron");
     const dropdownTitle = dropdownBtn.querySelector(".dropdown__button-text");
     const dropdownMenu = dropdown.querySelector(".dropdown__menu");
     const menuOptions = dropdownMenu.querySelectorAll(".option");
 
-    dropdownBtn.addEventListener("click", () => {
+    dropdownBtn.addEventListener("click", (event) => {
+        createRipple(dropdownBtn, event);
+        dropdownChevron.classList.toggle("rotate-up");
         dropdownMenu.classList.toggle("open");
     });
 
@@ -50,6 +55,7 @@ const handleDropdown = (dropdown) => {
             }
 
             dropdownMenu.classList.remove("open");
+            dropdownChevron.classList.toggle("rotate-up");
         });
     });
 };
@@ -57,3 +63,21 @@ const handleDropdown = (dropdown) => {
 dropdowns.forEach((dropdown) => {
     handleDropdown(dropdown);
 });
+
+const createRipple = (btn, event) => {
+    const circle = document.createElement("span");
+    const btnRect = btn.getBoundingClientRect();
+    const diameter = Math.max(btnRect.width, btnRect.height);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - (btnRect.left + radius)}px`;
+    circle.style.top = `${event.clientY - (btnRect.top + radius)}px`;
+    circle.className = "ripple";
+
+    const ripple = btn.querySelector(".ripple");
+    if (ripple)
+        ripple.remove();
+
+    btn.appendChild(circle);
+}

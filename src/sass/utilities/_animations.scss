@@ -48,3 +48,10 @@
         opacity: 1;
     }
 }
+
+@keyframes ripple {
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}

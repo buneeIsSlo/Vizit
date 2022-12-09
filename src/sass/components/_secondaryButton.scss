@@ -9,6 +9,9 @@
     background-color: transparent;
     outline: 1px solid $c-wool-white;
     flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
 
     @include breakpoint(lg) {
         padding: 0.8em 1em;

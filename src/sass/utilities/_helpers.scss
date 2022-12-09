@@ -51,5 +51,19 @@
 }
 
 .open {
-    max-height: none !important;
+    max-height: 20em !important;
+}
+
+.rotate-up {
+    transform: rotate(-180deg);
+}
+
+.ripple {
+  position: absolute; 
+  border-radius: 50%;
+  opacity: 0.5;
+  transform: scale(0);
+  animation: ripple 0.5s linear;
+  background-color: $c-wool-white;
+  pointer-events: none;
 }
