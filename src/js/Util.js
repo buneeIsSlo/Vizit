@@ -64,9 +64,14 @@ export const animatePath = async (grid, path) => {
     setVisualizingState(false);
 }
 
+
 export const isStartOrEndNode = (node) => {
     return node.classList.contains("start") || node.classList.contains("end");
 }
+
+
+export const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5);
+
 
 class QueueElement {
     constructor(element, priority) {

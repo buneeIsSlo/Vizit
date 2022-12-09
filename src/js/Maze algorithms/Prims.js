@@ -1,35 +1,28 @@
-import { isStartOrEndNode, switchNodeClassTo } from "../Util"
+import { isStartOrEndNode, switchNodeClassTo, shuffleArray } from "../Util"
 
 export const Prims = () => {
 
     const generateMaze = (grid, row, col) => {
         const allNodes = document.querySelectorAll(".grid__node");
+        const visited = new Set();
+
         allNodes.forEach((node) => {
             if (isStartOrEndNode(node)) return;
 
             switchNodeClassTo("wall", node);
         });
 
-        const visited = new Set();
-        let [curRow, curCol] = [row, col];
-        switchNodeClassTo("empty", grid[curRow][curCol]);
-
-        let frontierList = shuffle(getFrontierNodes(grid, curRow, curCol));
+        switchNodeClassTo("empty", grid[row][col]);
+        let frontierList = shuffleArray(getFrontierNodesPos(grid, row, col, visited));
 
         while (frontierList.length) {
             const [fRow, fCol] = frontierList.pop();
             const frontierNode = grid[fRow][fCol];
 
-            let pos = `${fRow}, ${fCol}`
-            if (visited.has(pos)) continue;
-            visited.add(pos);
-
             const [eRow, eCol] = getRandomEmptyNeighbour(grid, fRow, fCol, visited);
 
             const x = fRow - eRow;
             const y = fCol - eCol;
-
-            console.log(x, y);
 
             let inBetweenNode;
             if (x === 0) {
@@ -49,17 +42,17 @@ export const Prims = () => {
                 }
             }
 
-            switchNodeClassTo("empty", inBetweenNode);
-            switchNodeClassTo("empty", frontierNode);
+            if (!isStartOrEndNode(inBetweenNode))
+                switchNodeClassTo("empty", inBetweenNode);
 
+            if (!isStartOrEndNode(frontierNode))
+                switchNodeClassTo("empty", frontierNode);
 
-
-            frontierList = shuffle(getFrontierNodes(grid, fRow, fCol));
+            frontierList.push(...shuffleArray(getFrontierNodesPos(grid, fRow, fCol, visited)));
         }
-
     }
 
-    const getFrontierNodes = (grid, row, col) => {
+    const getFrontierNodesPos = (grid, row, col, visited) => {
         const neighbourNodes = [
             { row: row - 2, col: col },
             { row: row + 2, col: col },
@@ -72,6 +65,11 @@ export const Prims = () => {
             const [nRow, nCol] = [neighbour.row, neighbour.col];
 
             if (nRow < 0 || nCol < 0 || nRow >= grid.length || nCol >= grid[0].length) continue;
+            if (grid[nRow][nCol].classList.contains("empty")) continue;
+
+            const pos = `${nRow}, ${nCol}`;
+            if (visited.has(pos)) continue;
+            visited.add(pos);
 
             frontierNodes.push([nRow, nCol]);
         }
@@ -79,7 +77,7 @@ export const Prims = () => {
         return frontierNodes;
     }
 
-    const getRandomEmptyNeighbour = (grid, row, col, visited) => {
+    const getRandomEmptyNeighbour = (grid, row, col) => {
         const neighbourNodes = [
             { row: row - 2, col: col },
             { row: row + 2, col: col },
@@ -94,17 +92,12 @@ export const Prims = () => {
             if (nRow < 0 || nCol < 0 || nRow >= grid.length || nCol >= grid[0].length) continue;
             if (grid[nRow][nCol].classList.contains("wall")) continue;
 
-            // const pos = `${nRow}, ${nCol}`;
-            // if (visited.has(pos)) continue;
-
             validNeighbours.push([nRow, nCol]);
         }
 
         const randomNum = ~~(Math.random() * validNeighbours.length);
         return validNeighbours[randomNum];
     }
-
-    const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
 
     return {
         generateMaze,
