@@ -13,11 +13,8 @@
     gap: 1em;
     background-color: $c-wool-white;
     text-transform: uppercase;
-    transition: transform .2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-    &:hover {
-        transform: scale(1.01);
-    }
+    transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    cursor: pointer;
 
     &__text {
         color: #10100E;
@@ -29,6 +26,16 @@
 
         @include breakpoint(lg) {
             transform: scale(0.75) rotate(-90deg);
+        }
+    }
+
+    &:hover {
+        transform: scale(1.01);
+    }
+
+    &:hover svg {
+         @include breakpoint(lg) {
+            animation: rightLeft 0.6s ease-in-out forwards !important;
         }
     }
 }
