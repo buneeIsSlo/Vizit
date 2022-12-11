@@ -1,4 +1,4 @@
-import { addDelay, animateSearch, getPath, animatePath } from "../Util";
+import { addDelay, animateSearch, getPath, animatePath, showErrorToast, setVisualizingState } from "../Util";
 
 export const BreadthFirstFinder = () => {
 
@@ -47,6 +47,11 @@ export const BreadthFirstFinder = () => {
             }
 
             await addDelay(0.05);
+        }
+
+        if (!queue.length) {
+            showErrorToast();
+            setVisualizingState(false);
         }
 
     }

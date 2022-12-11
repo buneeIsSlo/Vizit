@@ -1,4 +1,4 @@
-import { PriorityQueue, addDelay, animateSearch, getPath, animatePath } from "../Util";
+import { PriorityQueue, addDelay, animateSearch, getPath, animatePath, setVisualizingState, showErrorToast } from "../Util";
 
 export const AStarFinder = () => {
 
@@ -59,6 +59,11 @@ export const AStarFinder = () => {
             }
 
             await addDelay(0.05);
+        }
+
+        if (queue.isEmpty()) {
+            showErrorToast();
+            setVisualizingState(false);
         }
 
     }
