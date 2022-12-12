@@ -11,7 +11,7 @@
 }
 
 .start {
-    background-color: #00FF47;
+    background-color: $c-cathode-green;
     cursor:move !important;
     position: relative;
 
@@ -28,7 +28,7 @@
 }
 
 .end {
-    background-color: #fb3640;
+    background-color: $c-devils-advocate;
     cursor:move !important;
     position: relative;
 
@@ -45,13 +45,11 @@
 }
 
 .searching {
-        background-color: #E3FFF6;
         background-color: yellow;
         animation: scaleOut .5s cubic-bezier(0.215, 0.610, 0.355, 1) infinite forwards;
 }
 
 .visited {
-    background-color: #1A1AA7;
     background-color: blue;
     animation: scaleIn 0.3s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
 }
@@ -66,10 +64,11 @@
 .path:before {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
     width: 6px;
     height: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 5px;
     animation: path-pulse 1s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
 }
@@ -98,7 +97,7 @@
     color: $c-wool-white;
 
     &__error {
-        outline: 2px solid #fb3640;
+        outline: 2px solid $c-devils-advocate;
         box-shadow: none;
     }
 }

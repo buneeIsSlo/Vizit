@@ -2,7 +2,7 @@
 
 @keyframes wallAnimation {
   0% {
-    background-color: #a0fecc;
+    background-color: $c-neo-mint;
   }
 
   100% {
@@ -17,7 +17,7 @@
 
   }
   50% {
-    background-color: #ffcc00;
+    background-color: $c-usc-gold;
     transform: translate(-50%, -50%) scale(0.7);
 
   }
