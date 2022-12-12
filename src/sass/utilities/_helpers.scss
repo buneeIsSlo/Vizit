@@ -46,7 +46,7 @@
 
 .searching {
         background-color: yellow;
-        animation: scaleOut .5s cubic-bezier(0.215, 0.610, 0.355, 1) infinite forwards;
+        animation: scaleOut 0.2s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
 }
 
 .visited {
@@ -59,18 +59,18 @@
     outline: 1px solid #FF5CFF !important;
     position: relative;
     z-index: 10;
-}
 
-.path:before {
-    content: "";
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 5px;
-    animation: path-pulse 1s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+    &:before {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+        animation: path-pulse 1s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+    }
 }
 
 .open {
@@ -86,7 +86,7 @@
   border-radius: 50%;
   opacity: 0.5;
   transform: scale(0);
-  animation: ripple 0.5s linear;
+  animation: ripple 0.4s linear;
   background-color: $c-wool-white;
   pointer-events: none;
 }

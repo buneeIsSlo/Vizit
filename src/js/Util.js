@@ -29,7 +29,7 @@ export const animateSearch = async (node) => {
     }
 
     switchNodeClassTo("searching", node);
-    await addDelay(1);
+    await addDelay(0.5);
     switchNodeClassTo("visited", node);
 };
 
@@ -62,7 +62,7 @@ export const animatePath = async (grid, path) => {
         }
         switchNodeClassTo("path", grid[row][col]);
 
-        await addDelay(0.3);
+        await addDelay(0.1);
     }
 
     setVisualizingState(false);
