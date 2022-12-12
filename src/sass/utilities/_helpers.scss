@@ -13,11 +13,35 @@
 .start {
     background-color: #00FF47;
     cursor:move !important;
+    position: relative;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 75%;
+        height: 75%;
+        outline: 1px solid green;
+    }
 }
 
 .end {
     background-color: #fb3640;
     cursor:move !important;
+    position: relative;
+
+        &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 75%;
+        height: 75%;
+        outline: 1px double maroon;
+    }
 }
 
 .searching {
