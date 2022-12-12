@@ -19,7 +19,7 @@ clearGridBtn.addEventListener("click", (event) => {
 clearPathBtn.addEventListener("click", (event) => {
     createRipple(clearPathBtn, event);
     appGrid.clearPath();
-})
+});
 
 visualizeBtn.addEventListener("click", () => {
     const algoType = visualizeBtn.dataset.algoType;
@@ -80,4 +80,4 @@ const createRipple = (btn, event) => {
         ripple.remove();
 
     btn.appendChild(circle);
-}
+};

@@ -49,9 +49,9 @@ export const DepthFirstFinder = () => {
             await addDelay(0.05);
         }
 
-    }
+    };
 
     return {
         findPath,
-    }
-}
+    };
+};

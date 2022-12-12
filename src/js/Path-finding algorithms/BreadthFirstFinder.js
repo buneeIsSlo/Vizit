@@ -54,9 +54,9 @@ export const BreadthFirstFinder = () => {
             setVisualizingState(false);
         }
 
-    }
+    };
 
     return {
         findPath,
-    }
-}
+    };
+};

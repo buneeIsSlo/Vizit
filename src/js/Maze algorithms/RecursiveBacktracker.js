@@ -53,7 +53,7 @@ export const RecursiveBacktracker = () => {
                 [curRow, curCol] = stack.pop();
             }
         }
-    }
+    };
 
     const getRandomNeighbourPos = (grid, row, col, visited) => {
         const neighbourNodes = [
@@ -78,9 +78,9 @@ export const RecursiveBacktracker = () => {
 
         const randomNum = ~~(Math.random() * validNeighbours.length);
         return validNeighbours[randomNum];
-    }
+    };
 
     return {
         generateMaze,
-    }
-}
+    };
+};

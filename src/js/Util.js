@@ -1,26 +1,26 @@
-import Toastify from 'toastify-js';
+import Toastify from "toastify-js";
 
 
 export const switchNodeClassTo = (customClass, node) => {
     node.className = "grid__node";
     node.classList.add(customClass);
-}
+};
 
 
 const gridContainer = document.querySelector(".app__grid");
 export const isVisualizing = () => {
     return gridContainer.dataset.visualizing == "true";
-}
+};
 export const setVisualizingState = (bool) => {
     gridContainer.dataset.visualizing = bool;
-}
+};
 
 
 export const addDelay = async (seconds) => {
     return new Promise((resolve) => {
         return setTimeout(resolve, seconds * 100);
     });
-}
+};
 
 
 export const animateSearch = async (node) => {
@@ -31,7 +31,7 @@ export const animateSearch = async (node) => {
     switchNodeClassTo("searching", node);
     await addDelay(1);
     switchNodeClassTo("visited", node);
-}
+};
 
 
 export const getPath = (map, sRow, sCol, eRow, eCol) => {
@@ -49,7 +49,7 @@ export const getPath = (map, sRow, sCol, eRow, eCol) => {
     }
 
     return path;
-}
+};
 
 
 export const animatePath = async (grid, path) => {
@@ -66,12 +66,12 @@ export const animatePath = async (grid, path) => {
     }
 
     setVisualizingState(false);
-}
+};
 
 
 export const isStartOrEndNode = (node) => {
     return node.classList.contains("start") || node.classList.contains("end");
-}
+};
 
 
 export const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5);
@@ -86,23 +86,23 @@ class QueueElement {
 
 export class PriorityQueue {
     constructor() {
-        this.items = []
+        this.items = [];
     }
 
     enqueue(element, priority) {
-        let queueElement = new QueueElement(element, priority)
+        let queueElement = new QueueElement(element, priority);
 
-        let added = false
+        let added = false;
         for (let i = 0; i < this.items.length; i++) {
             if (queueElement.priority < this.items[i].priority) {
-                this.items.splice(i, 0, queueElement)
-                added = true
-                break
+                this.items.splice(i, 0, queueElement);
+                added = true;
+                break;
             }
         }
 
         if (!added) {
-            this.items.push(queueElement)
+            this.items.push(queueElement);
         }
     }
 
@@ -111,11 +111,11 @@ export class PriorityQueue {
     }
 
     isEmpty() {
-        return this.items.length == 0
+        return this.items.length == 0;
     }
 
     contains(element) {
-        return !!this.items.find(item => item.element === element)
+        return !!this.items.find(item => item.element === element);
     }
 }
 
@@ -130,4 +130,4 @@ export const showErrorToast = () => {
         className: "toast toast__error",
         stopOnFocus: true,
     }).showToast();
-}
+};

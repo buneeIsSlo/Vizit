@@ -26,7 +26,7 @@ export const grid = () => {
         let columns = Math.floor(gridContainer.clientWidth / size);
 
         populateGrid(rows, columns);
-    }
+    };
 
     const createMaze = (algoType) => {
         if (isVisualizing()) {
@@ -35,6 +35,7 @@ export const grid = () => {
 
         clearGrid();
 
+        /* eslint-disable */
         switch (algoType) {
             case "prims":
                 Prims().generateMaze(nodesArray, 0, 0);
@@ -45,7 +46,8 @@ export const grid = () => {
             default:
                 return;
         }
-    }
+        /* eslint-enable */
+    };
 
     const visualize = (algoType) => {
         if (!algoType || isVisualizing()) {
@@ -61,10 +63,11 @@ export const grid = () => {
             sCol: +startNode.dataset.col,
             eRow: +endNode.dataset.row,
             eCol: +endNode.dataset.col
-        }
+        };
 
         setVisualizingState(true);
 
+        /* eslint-disable */
         switch (algoType) {
             case "A*":
                 AStarFinder().findPath(obj.grid, obj.sRow, obj.sCol, obj.eRow, obj.eCol);
@@ -74,10 +77,12 @@ export const grid = () => {
                 break;
             case "DFS":
                 DepthFirstFinder().findPath(obj.grid, obj.sRow, obj.sCol, obj.eRow, obj.eCol);
+                break;
             default:
                 return;
         }
-    }
+        /* eslint-enable */
+    };
 
     const populateGrid = (rows, columns) => {
         gridContainer.style.setProperty("--rows", rows);
@@ -100,7 +105,7 @@ export const grid = () => {
         [startRow, startCol] = [1, 1];
         [endRow, endCol] = [nodesArray.length - 2, nodesArray[0].length - 2];
         addStartandEndNodes(startRow, startCol, endRow, endCol);
-    }
+    };
 
     const addNodeProperties = (node, row, col) => {
         node.dataset.row = row;
@@ -112,10 +117,10 @@ export const grid = () => {
             toggleNode(node);
         });
 
-        node.addEventListener('mousedown', () => {
+        node.addEventListener("mousedown", () => {
             toggleNode(node);
         });
-    }
+    };
 
     const toggleNode = (node) => {
         if (node.classList.contains("empty")) {
@@ -124,7 +129,7 @@ export const grid = () => {
         else if (node.classList.contains("wall")) {
             node.className = emptyClass;
         }
-    }
+    };
 
     const addStartandEndNodes = (sRow, sCol, eRow, eCol) => {
         let startNode = nodesArray[sRow][sCol];
@@ -136,7 +141,7 @@ export const grid = () => {
         endNode.draggable = true;
 
         handleDragAndDrop([startNode, endNode]);
-    }
+    };
 
     const handleDragAndDrop = (draggableNodes) => {
         let draggedNode = null;
@@ -177,7 +182,7 @@ export const grid = () => {
                 console.log(+targetNode.dataset.row, +targetNode.dataset.col);
             });
         });
-    }
+    };
 
     const clearGrid = () => {
         if (isVisualizing()) {
@@ -193,7 +198,7 @@ export const grid = () => {
 
             switchNodeClassTo("empty", node);
         });
-    }
+    };
 
     const clearPath = () => {
         if (isVisualizing()) {
@@ -206,7 +211,7 @@ export const grid = () => {
         [...pathNodes, ...visitedNodes].forEach((node) => {
             switchNodeClassTo("empty", node);
         });
-    }
+    };
 
     gridContainer.addEventListener("mousedown", (event) => {
         if (event.target.classList.contains("start") || event.target.classList.contains("end")) {
@@ -224,7 +229,7 @@ export const grid = () => {
         clearPath,
         visualize,
         createMaze,
-    }
-}
+    };
+};
 
 

@@ -7,9 +7,9 @@ export const Node = () => {
         node.classList.add("empty");
 
         return node;
-    }
+    };
 
     return {
         createNode,
-    }
-}
+    };
+};

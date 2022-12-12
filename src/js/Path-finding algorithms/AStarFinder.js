@@ -66,9 +66,9 @@ export const AStarFinder = () => {
             setVisualizingState(false);
         }
 
-    }
+    };
 
     return {
         findPath,
-    }
-}
+    };
+};

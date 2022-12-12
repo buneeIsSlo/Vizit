@@ -1,4 +1,4 @@
-import { isStartOrEndNode, switchNodeClassTo, shuffleArray } from "../Util"
+import { isStartOrEndNode, switchNodeClassTo, shuffleArray } from "../Util";
 
 export const Prims = () => {
 
@@ -50,7 +50,7 @@ export const Prims = () => {
 
             frontierList.push(...shuffleArray(getFrontierNodesPos(grid, fRow, fCol, visited)));
         }
-    }
+    };
 
     const getFrontierNodesPos = (grid, row, col, visited) => {
         const neighbourNodes = [
@@ -75,7 +75,7 @@ export const Prims = () => {
         }
 
         return frontierNodes;
-    }
+    };
 
     const getRandomEmptyNeighbour = (grid, row, col) => {
         const neighbourNodes = [
@@ -97,9 +97,9 @@ export const Prims = () => {
 
         const randomNum = ~~(Math.random() * validNeighbours.length);
         return validNeighbours[randomNum];
-    }
+    };
 
     return {
         generateMaze,
-    }
-}
+    };
+};
