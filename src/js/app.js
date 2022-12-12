@@ -8,6 +8,8 @@ const visualizeBtn = document.querySelector(".visualize");
 const clearGridBtn = document.querySelector(".clear-grid");
 const clearPathBtn = document.querySelector(".clear-path");
 const dropdowns = document.querySelectorAll(".dropdown");
+const openControlsBtn = document.querySelector(".toggle-menu");
+const controlsMenu = document.querySelector(".menu");
 
 appGrid.renderGrid();
 window.addEventListener("resize", () => appGrid.renderGrid());
@@ -19,6 +21,21 @@ clearGridBtn.addEventListener("click", (event) => {
 clearPathBtn.addEventListener("click", (event) => {
     createRipple(clearPathBtn, event);
     appGrid.clearPath();
+});
+
+openControlsBtn.addEventListener("click", () => {
+    const chevron = document.querySelector(".toggle-menu__chevron");
+    const btnText = document.querySelector(".toggle-menu__text");
+
+    chevron.classList.toggle("rotate-up");
+    controlsMenu.classList.toggle("open");
+
+    if (controlsMenu.classList.contains("open")) {
+        btnText.innerText = "Close controls";
+    }
+    else {
+        btnText.innerText = "Open controls";
+    }
 });
 
 visualizeBtn.addEventListener("click", () => {

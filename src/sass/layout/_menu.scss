@@ -10,8 +10,17 @@
         width: 100%;
         height: 64px;
         background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.25em;
         color: $c-wool-white;
         outline: 1px dashed $c-grayish-green;
+        cursor: pointer;
+
+        &__chevron {
+            transition: transform 0.4s cubic-bezier(0.17, 0.61, 0.11, 1.02);
+        }
 
         @include breakpoint(lg) {
             display: none;
@@ -22,7 +31,7 @@
         width: 100%;
         height: auto;
         max-width: 375px;
-        max-height: 200px;
+        max-height: 0px;
         overflow-y: scroll;
         padding-inline: 2em;
         margin-inline: auto;
@@ -31,11 +40,11 @@
         flex-direction: column;
         flex-grow: 1;
         gap: 2rem;
+        transition: max-height 0.5s cubic-bezier(0.17, 0.61, 0.47, 1.01);
 
         @include breakpoint(lg) {
             max-height: 100vh;
             overflow-y: auto;
-            // padding: 1em;
         }
 
         &__top-controls {
