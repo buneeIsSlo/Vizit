@@ -10,18 +10,22 @@
   }
 }
 
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
-    }
+@keyframes path-pulse{
+  0% {
+    background-color: $c-wool-white;
+    transform: translate(-50%, -50%) scale(1);
 
-    50% {
-        transform: translate(-50%, -50%) scale(0.7);
-    }
+  }
+  50% {
+    background-color: #ffcc00;
+    transform: translate(-50%, -50%) scale(0.7);
 
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
+  }
+  100% {
+    background-color: $c-wool-white;
+    transform: translate(-50%, -50%) scale(1);
+
+  }
 }
 
 @keyframes scaleOut {

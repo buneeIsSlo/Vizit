@@ -60,6 +60,7 @@
     background-color: #FF5CFF;
     outline: 1px solid #FF5CFF !important;
     position: relative;
+    z-index: 10;
 }
 
 .path:before {
@@ -67,11 +68,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
     border-radius: 5px;
-    background-color: $c-wool-white;
-    animation: pulse 1s cubic-bezier(0.215, 0.610, 0.355, 1) infinite forwards;
+    animation: path-pulse 1s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
 }
 
 .open {
