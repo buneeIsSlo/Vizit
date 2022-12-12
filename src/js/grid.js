@@ -1,6 +1,7 @@
 import { Node } from "./Node";
 import { switchNodeClassTo, isVisualizing, setVisualizingState } from "./Util";
 import { BreadthFirstFinder } from "./Path-finding algorithms/BreadthFirstFinder";
+import { DepthFirstFinder } from "./Path-finding algorithms/DepthFirstFinder";
 import { AStarFinder } from "./Path-finding algorithms/AStarFinder";
 import { RecursiveBacktracker } from "./Maze algorithms/RecursiveBacktracker";
 import { Prims } from "./Maze algorithms/Prims";
@@ -70,6 +71,8 @@ export const grid = () => {
             case "BFS":
                 BreadthFirstFinder().findPath(obj.grid, obj.sRow, obj.sCol, obj.eRow, obj.eCol);
                 break;
+            case "DFS":
+                DepthFirstFinder().findPath(obj.grid, obj.sRow, obj.sCol, obj.eRow, obj.eCol);
             default:
                 return;
         }
