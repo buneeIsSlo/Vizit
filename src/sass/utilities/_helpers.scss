@@ -67,3 +67,14 @@
   background-color: $c-wool-white;
   pointer-events: none;
 }
+
+.toast {
+    background: $c-chaos-black;
+    border-radius: 0px;
+    color: $c-wool-white;
+
+    &__error {
+        outline: 2px solid #fb3640;
+        box-shadow: none;
+    }
+}
