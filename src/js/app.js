@@ -11,48 +11,65 @@ const openControlsBtn = document.querySelector(".toggle-menu");
 const controlsMenu = document.querySelector(".menu");
 
 const appGrid = Grid();
-appGrid.renderGrid();
+setUpGrid();
+handleControls();
 
-const resizeObserver = new ResizeObserver((entries) => {
-    console.log(entries);
+function setUpGrid() {
     appGrid.renderGrid();
-});
-resizeObserver.observe(document.body);
 
-clearGridBtn.addEventListener("click", (event) => {
-    createRipple(clearGridBtn, event);
-    appGrid.clearGrid();
-});
-clearPathBtn.addEventListener("click", (event) => {
-    createRipple(clearPathBtn, event);
-    appGrid.clearPath();
-});
+    const resizeObserver = new ResizeObserver(() => {
+        appGrid.renderGrid();
+    });
+    resizeObserver.observe(document.body);
+}
 
-openControlsBtn.addEventListener("click", () => {
-    const chevron = document.querySelector(".toggle-menu__chevron");
-    const btnText = document.querySelector(".toggle-menu__text");
+function handleControls() {
+    // Only for mobile/touch screens
+    toggleControls();
 
-    chevron.classList.toggle("rotate-up");
-    controlsMenu.classList.toggle("open");
+    // Dropdowns
+    dropdowns.forEach((dropdown) => {
+        handleDropdown(dropdown);
+    });
 
-    if (controlsMenu.classList.contains("open")) {
-        btnText.innerText = "Close controls";
-    }
-    else {
-        btnText.innerText = "Open controls";
-    }
-});
+    // Secondary buttons
+    clearGridBtn.addEventListener("click", (event) => {
+        createRipple(clearGridBtn, event);
+        appGrid.clearGrid();
+    });
+    clearPathBtn.addEventListener("click", (event) => {
+        createRipple(clearPathBtn, event);
+        appGrid.clearPath();
+    });
 
-visualizeBtn.addEventListener("click", () => {
-    const algoType = visualizeBtn.dataset.algoType;
+    // Visuailze button
+    visualizeBtn.addEventListener("click", () => {
+        const algoType = visualizeBtn.dataset.algoType;
 
-    if (!algoType) return;
+        if (!algoType) return;
 
-    console.log("vizzing");
-    appGrid.visualize(algoType);
-});
+        appGrid.visualize(algoType);
+    });
+}
 
-const handleDropdown = (dropdown) => {
+function toggleControls() {
+    openControlsBtn.addEventListener("click", () => {
+        const chevron = document.querySelector(".toggle-menu__chevron");
+        const btnText = document.querySelector(".toggle-menu__text");
+
+        chevron.classList.toggle("rotate-up");
+        controlsMenu.classList.toggle("open");
+
+        if (controlsMenu.classList.contains("open")) {
+            btnText.innerText = "Close controls";
+        }
+        else {
+            btnText.innerText = "Open controls";
+        }
+    });
+}
+
+function handleDropdown(dropdown) {
     const dropdownType = dropdown.dataset.dropdownType;
     const dropdownBtn = dropdown.querySelector(".dropdown__button");
     const dropdownChevron = dropdown.querySelector(".dropdown__chevron");
@@ -80,13 +97,9 @@ const handleDropdown = (dropdown) => {
             dropdownChevron.classList.toggle("rotate-up");
         });
     });
-};
+}
 
-dropdowns.forEach((dropdown) => {
-    handleDropdown(dropdown);
-});
-
-const createRipple = (btn, event) => {
+function createRipple(btn, event) {
     const circle = document.createElement("span");
     const btnRect = btn.getBoundingClientRect();
     const diameter = Math.max(btnRect.width, btnRect.height);
@@ -102,4 +115,4 @@ const createRipple = (btn, event) => {
         ripple.remove();
 
     btn.appendChild(circle);
-};
+}
