@@ -3,6 +3,11 @@
 
 .app__grid {
     padding: 2rem;
+    min-height: 80vh;
+
+    @include breakpoint(lg) {
+        min-height: none;
+    }
 
     .grid {
         width: 100%;

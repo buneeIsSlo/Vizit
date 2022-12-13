@@ -3,7 +3,6 @@ import { grid } from "./grid";
 
 console.log("ohaider");
 
-const appGrid = grid();
 const visualizeBtn = document.querySelector(".visualize");
 const clearGridBtn = document.querySelector(".clear-grid");
 const clearPathBtn = document.querySelector(".clear-path");
@@ -11,8 +10,14 @@ const dropdowns = document.querySelectorAll(".dropdown");
 const openControlsBtn = document.querySelector(".toggle-menu");
 const controlsMenu = document.querySelector(".menu");
 
+const appGrid = grid();
 appGrid.renderGrid();
-window.addEventListener("resize", () => appGrid.renderGrid());
+
+const resizeObserver = new ResizeObserver((entries) => {
+    console.log(entries);
+    appGrid.renderGrid();
+});
+resizeObserver.observe(document.body);
 
 clearGridBtn.addEventListener("click", (event) => {
     createRipple(clearGridBtn, event);
