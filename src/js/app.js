@@ -1,5 +1,5 @@
 import "../sass/main.scss";
-import { grid } from "./grid";
+import { Grid } from "./Grid";
 
 console.log("ohaider");
 
@@ -10,7 +10,7 @@ const dropdowns = document.querySelectorAll(".dropdown");
 const openControlsBtn = document.querySelector(".toggle-menu");
 const controlsMenu = document.querySelector(".menu");
 
-const appGrid = grid();
+const appGrid = Grid();
 appGrid.renderGrid();
 
 const resizeObserver = new ResizeObserver((entries) => {

@@ -3,7 +3,7 @@ import { switchNodeClassTo, isVisualizing, setVisualizingState } from "./Util";
 import { AStarFinder, BreadthFirstFinder, DepthFirstFinder } from "./Path-finding algorithms/path-finders";
 import { Prims, RecursiveBacktracker } from "./Maze algorithms/maze-generator";
 
-export const grid = () => {
+export const Grid = () => {
     // Constants
     const gridContainer = document.querySelector(".grid");
 
@@ -231,5 +231,3 @@ export const grid = () => {
         createMaze,
     };
 };
-
-
