@@ -179,7 +179,6 @@ export const Grid = () => {
                 targetNode.addEventListener("dragstart", (event) => {
                     draggedNode = event.target;
                 });
-                console.log(+targetNode.dataset.row, +targetNode.dataset.col);
             });
         });
     };
