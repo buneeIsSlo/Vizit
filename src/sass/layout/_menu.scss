@@ -60,7 +60,15 @@
         }
 
         &__bottom-controls {
-            margin-bottom: 2rem;
+            
+            & > * {
+                margin-bottom: 2em;
+            }
+
+            .viz-controls {
+                display: flex;
+                gap: 2rem;
+            }
         }
     }
 }
