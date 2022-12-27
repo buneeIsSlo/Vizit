@@ -12,7 +12,9 @@ export const Prims = () => {
             switchNodeClassTo("wall", node);
         });
 
-        switchNodeClassTo("empty", grid[row][col]);
+        if (!isStartOrEndNode(grid[row][col]))
+            switchNodeClassTo("empty", grid[row][col]);
+
         let frontierList = shuffleArray(getFrontierNodesPos(grid, row, col, visited));
 
         while (frontierList.length) {
