@@ -9,6 +9,8 @@ const clearPathBtn = document.querySelector(".clear-path");
 const dropdowns = document.querySelectorAll(".dropdown");
 const openControlsBtn = document.querySelector(".toggle-menu");
 const controlsMenu = document.querySelector(".menu");
+const playPauseBtn = document.querySelector(".play_pause-viz");
+const cancelBtn = document.querySelector(".cancel-viz");
 
 const appGrid = Grid();
 setUpGrid();
@@ -49,6 +51,14 @@ function handleControls() {
         if (!algoType) return;
 
         appGrid.visualize(algoType);
+    });
+
+    playPauseBtn.addEventListener("click", (event) => {
+        createRipple(playPauseBtn, event);
+    });
+
+    cancelBtn.addEventListener("click", (event) => {
+        createRipple(cancelBtn, event);
     });
 }
 
