@@ -39,6 +39,10 @@
             cursor: pointer;
             filter: brightness(.8);
 
+            &:last-of-type {
+                padding-bottom: 0.8em;
+            }
+
             &:hover {
                 filter: brightness(1);
             }
