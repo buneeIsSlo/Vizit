@@ -75,7 +75,7 @@ My main inspiration for creating this project was [Clement](https://www.youtube.
 <div align="center">
 
 ![prototype screenshot](./public/earlyPrototype.png)
-Early prototype
+Rough Sketch
 
 </div>
 
