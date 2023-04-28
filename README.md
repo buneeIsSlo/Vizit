@@ -1,6 +1,12 @@
-# [Vizit]()
+<div align="center">
 
-A path finding visualization tool.
+# [Vizit](https://github.com/buneeIsSlo/Vizit)
+
+A path finding visualization app.
+
+![desktop screenshot](./public/vizit.png)
+
+</div>
 
 ## ✨ Features
 
@@ -60,11 +66,18 @@ Build and compile
 
 ## 🌈 Inspiration
 
-My main inspiration for creating this project was Clement, who had displayed his own path-finding visualizer. Seeing his work sparked a deep fascination with path-finding algorithms in me, and I knew I had to build one for myself. But I hit a bit of a roadblock because there were gaps in my knowledge that I needed to fill before I could make it happen. So, I took some time to learn about graph algorithms, and it was totally worth it! I put in a lot of effort and dedication, and eventually, I was able to create this app.
+My main inspiration for creating this project was [Clement](https://www.youtube.com/@clem), who had displayed his own [path-finding visualizer](https://youtu.be/n4t_-NjY_Sg?t=178). Seeing his work sparked a deep fascination with path-finding algorithms in me, and I knew I had to build one for myself. But I hit a bit of a roadblock because there were gaps in my knowledge that I needed to fill before I could make it happen. So, I took some time to learn about graph algorithms, and it was totally worth it! I put in a lot of effort and dedication, and eventually, I was able to create this app.
 
 ## 💡 Challenges/Learnings
 
 ### Design
+
+<div align="center">
+
+![prototype screenshot](./public/earlyPrototype.png)
+Early prototype
+
+</div>
 
 When designing this application, I wanted to keep the user interface simple and intuitive. So, I came up with the idea to have the control menu on the left and the grid on the right, which worked great on desktop. However, I quickly noticed that this layout didn't work as well on mobile devices.
 
@@ -74,7 +87,13 @@ While it's not a perfect solution, it gets the job done and allows users to inte
 
 ### Development
 
-To-do~
+I used a `grid` layout for the entire app(medium to large screens), which made it easier for the visualization grid to resize as the browser window changed size.
+
+Initially, I had planned to use the HTML `canvas` element to create the visualization grid, but I found the process of creating the grid with all the nodes and animations to be extremely tedious and difficult. So, I opted for a slightly less optimal method.
+
+I created a `div` grid container filled with `<button>` elements that acted as nodes, and I applied the `grid__node` class to each button element by default for styling. The state of each node was defined by its subclass; for example, the `empty` subclass represented a node that was free to traverse, while the `wall` subclass represented a node that blocked an algorithm from moving to the next node. This method allowed me to manipulate the state of the nodes using event listeners like `click`, `mousemove`, and more. I also used `data` attributes to add position data to each node.
+
+To make the start and end nodes draggable, I made use of the `dragstart`, `dragover`, and `drop` event listeners. This works well on Chrome and other Chromium-based browsers, but unfortunately, Firefox doesn't support this method yet.
 
 ## 📜 License
 
@@ -82,9 +101,9 @@ To-do~
 
 ## 💙 Acknowledgements
 
-- [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
-- [Awesome README](https://github.com/matiassingers/awesome-readme)
-- [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+- Big thanks to Hisham for his awesome [video](https://www.youtube.com/watch?v=-A9SsbLfDMs) on his path-finding algorithms visualizer! I learned so much from it and gained some valuable insights.
+
+- I also want to give a shoutout to Super Tommy from Ourcade for his super helpful video on [Breadth-first search](https://www.youtube.com/watch?v=CL_AhHhjZ7Y). Thanks, Tommy!
 
 <br>
 
